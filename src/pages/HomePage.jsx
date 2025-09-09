@@ -3,6 +3,7 @@ const HomePage=()=>{
         <div id="HomePage">
             메인 페이지입니다!
             <p>testt</p>
+
         </div>
     )
 }
