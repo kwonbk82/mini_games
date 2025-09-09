@@ -9,6 +9,7 @@ const HomePage=()=>{
             <p>slslslsl</p>
             <p>slslslsl</p>
             <p>slslslsl</p>
+            <p>slslslsl</p>
 
         </div>
     )
