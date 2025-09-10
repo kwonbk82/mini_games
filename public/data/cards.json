@@ -1,0 +1,38 @@
+[
+    {
+        "image": "/img/bewd.jpg",
+        "name": "푸른 눈의 백룡"
+    },
+    {
+        "image": "/img/black.jpg",
+        "name": "블랙매지션"
+    },
+    {
+        "image": "/img/black_girl.jpg",
+        "name": "블랙매지션 걸"
+    },
+    {
+        "image": "/img/rebd.jpg",
+        "name": "붉은 눈의 흑룡"
+    },
+    {
+        "image": "/img/kuriboh.jpg",
+        "name": "크리보"
+    },
+    {
+        "image": "/img/osiris.jpg",
+        "name": "오시리스의 천공룡"
+    },
+    {
+        "image": "/img/ra.jpg",
+        "name": "라의 익신룡"
+    },
+    {
+        "image": "/img/obelisk.jpg",
+        "name": "오벨리스크의 거신병"
+    },
+    {
+        "image": "/img/wingkuri.jpg",
+        "name": "날개크리보"
+    }
+]
