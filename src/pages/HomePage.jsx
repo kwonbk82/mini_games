@@ -9,10 +9,13 @@ import 'swiper/css/pagination';
 import './HomePage.css';
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { useParams } from 'react-router-dom';
 
 const HomePage = () => {
+    const { id } = useParams();
     const [isReady, setIsReady] = useState(false);
     const [lists, setLists] = useState([]);
+
 
     const fetchGame = async () => {
         try {
@@ -53,7 +56,7 @@ const HomePage = () => {
             >
                 {lists.map((item) => (
                     <SwiperSlide key={item.id}>
-                        <HomeList lists={item} />
+                        <HomeList lists={item}/>
                     </SwiperSlide>
                 ))}
             </Swiper>
