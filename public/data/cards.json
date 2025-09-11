@@ -24,15 +24,15 @@
         "name": "오시리스의 천공룡"
     },
     {
-        "image": "/img/ra.jpg",
+        "image": "/img/real_ra.PNG",
         "name": "라의 익신룡"
     },
     {
-        "image": "/img/obelisk.jpg",
+        "image": "/img/Obelisk.PNG",
         "name": "오벨리스크의 거신병"
     },
     {
-        "image": "/img/wingkuri.jpg",
-        "name": "날개크리보"
+        "image": "/img/exodia.jpg",
+        "name": "엑조디아"
     }
 ]
