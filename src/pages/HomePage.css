@@ -1,0 +1,24 @@
+#HomePage {
+    display: flex; /* Flexbox 레이아웃 사용 */
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    height: 100vh; /* 뷰포트 전체 높이를 차지하도록 설정 */
+}
+
+#HomePage .home-swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#HomePage .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+#HomePage .swiper-slide img {
+  display: block;
+  width: 100%;
+}
