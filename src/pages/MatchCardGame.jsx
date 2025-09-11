@@ -87,7 +87,6 @@ const MatchCardGame = () => {
     return (
         <div id="MatchCardGame">
             <h1>카드 맞추기 게임</h1>
-            
             <div className="grid-container">
                 {cards.map((card) => (
                     <Card
@@ -102,9 +101,9 @@ const MatchCardGame = () => {
                     />
                 ))}
             </div>
-            <div className="score">시도: {score}번</div>
+            <div className="score">LP : {4000-(score*200)}</div>
             <button onClick={startGame}>재시작</button>
-            <HomeBtn/>
+            <HomeBtn />
         </div>
     );
 };

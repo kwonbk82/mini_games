@@ -36,6 +36,7 @@
   grid-gap: 16px;
   grid-template-columns: repeat(6, 140px);
   grid-template-rows: repeat(2, calc(140px / 2 * 3));
+
 }
 
 #MatchCardGame .card {

@@ -9,32 +9,8 @@ import 'swiper/css/pagination';
 import './HomePage.css';
 // import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
-import { useParams } from 'react-router-dom';
 
-const HomePage = () => {
-    const { id } = useParams();
-    const [isReady, setIsReady] = useState(false);
-    const [lists, setLists] = useState([]);
-
-
-    const fetchGame = async () => {
-        try {
-            const res = await axios.get('/data/minigames.json');
-            setLists(res.data);
-        } catch (e) {
-            console.error('데이터 로딩 실패 :', e); // console.e를 console.error로 수정
-        } finally {
-            setIsReady(true);
-        }
-    };
-
-    useEffect(() => {
-        fetchGame();
-    }, []);
-
-    if (!isReady) {
-        return <div>로딩 중...</div>;
-    }
+const HomePage = ({lists}) => {
 
     return (
         <div id="HomePage">

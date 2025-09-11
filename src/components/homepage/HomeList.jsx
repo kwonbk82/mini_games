@@ -1,10 +1,10 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const HomeList = ({ lists }) => {
     
     return (
         <div id="HomeList">
-            <Link to={`/game/${lists.id}`}>
+            <Link to={`/${lists.id}`}>
                 <img src={lists.img} alt={lists.name} />
             </Link>
             <p className="list-name">{lists.name}</p>
