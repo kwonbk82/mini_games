@@ -1,2 +1,3 @@
-import HomeList from "../components/homepage/HomeList";
-export {HomeList};
+import HomePage from "./HomePage";
+import RulePage from "./RulePage";
+export {HomePage,RulePage};
