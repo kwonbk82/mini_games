@@ -1,7 +1,7 @@
 const Gameover=()=>{
     return(
         <div id="Gameover">
-            메인 페이지입니다!
+            메인 페이지 아닙니다
         </div>
     )
 }
