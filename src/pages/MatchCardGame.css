@@ -47,6 +47,7 @@
   position: relative;
   transform-style: preserve-3d;
   transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
 
 #MatchCardGame .front-image {
@@ -61,7 +62,7 @@
 #MatchCardGame .front, #MatchCardGame .back {
     backface-visibility: hidden;
     position: absolute;
-    border-radius: 10px;
+    border-radius: 5px;
     top: 0;
     left: 0;
     height: 100%;
