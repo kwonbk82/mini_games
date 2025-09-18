@@ -9,6 +9,7 @@ const MatchCardGame = () => {
     const [firstCard, setFirstCard] = useState(null);
     const [secondCard, setSecondCard] = useState(null);
     const [lockBoard, setLockBoard] = useState(false);
+    const [ishard,setIsHard] = useState(false);
 
     // 게임 시작 또는 재시작
     const startGame = async () => {
@@ -20,12 +21,31 @@ const MatchCardGame = () => {
         try {
             const res = await fetch('/data/cards.json');
             const data = await res.json();
-            const newCards = [...data, ...data]
-                .sort(() => Math.random() - 0.5)
-                .map((card) => ({ ...card, id: Math.random() })); // 고유 id 추가
-            setCards(newCards);
+            // const newCards = [...data, ...data]
+            //     .sort(() => Math.random() - 0.5)
+            //     .map((card) => ({ ...card, id: Math.random() }));
+            // setCards(newCards);
+
+            // Fisher-Yates Shuffle
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    // 0부터 i까지의 무작위 인덱스(j)를 선택
+                    const j = Math.floor(Math.random() * (i + 1));
+                    // 현재 요소(i)와 무작위로 선택된 요소(j)를 교환
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+            const easydata = data.slice(0, 9); // 카드 6개만 사용
+            const newCards = ishard ? [...data, ...data] : [...easydata, ...easydata];
+            shuffleArray(newCards);
+            const finalCards = newCards.map((card) => ({
+                ...card,
+                id: Math.random(),
+            }));
+            setCards(finalCards);
         } catch (error) {
-            console.error('Failed to fetch cards:', error);
+            console.error('데이터 불러오기 실패:', error);
         }
     };
 
@@ -43,7 +63,6 @@ const MatchCardGame = () => {
         }
 
         setSecondCard(clickedCard);
-        setScore((prevScore) => prevScore + 1);
         setLockBoard(true);
     };
 
@@ -59,6 +78,7 @@ const MatchCardGame = () => {
                 // 매치 실패: 1초 후 뒤집기
                 setTimeout(() => {
                     resetCards();
+                    setScore((prevScore) => prevScore + 1);
                 }, 1000);
             }
         }
@@ -84,10 +104,17 @@ const MatchCardGame = () => {
         setSecondCard(null);
         setLockBoard(false);
     };
+    // 더블 클릭 방지
+    const handleDoubleClick = (e) => {
+        e.preventDefault();
+        console.log('더블클릭이 비활성화되었습니다.');
+    };
     return (
         <div id="MatchCardGame">
-            <h1>카드 맞추기 게임</h1>
-            <div className="grid-container">
+            <div className="score">
+                LP : <span> {4000 - score * 200}</span>
+            </div>
+            <div className="grid-container" onDoubleClick={handleDoubleClick}>
                 {cards.map((card) => (
                     <Card
                         key={card.id}
@@ -101,9 +128,10 @@ const MatchCardGame = () => {
                     />
                 ))}
             </div>
-            <div className="score">LP : {4000-(score*200)}</div>
-            <button onClick={startGame}>재시작</button>
-            <HomeBtn />
+            <div className='common-btn'>
+                <button onClick={startGame}>재시작</button>
+                <HomeBtn />
+            </div>
         </div>
     );
 };
