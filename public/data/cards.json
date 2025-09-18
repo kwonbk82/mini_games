@@ -34,5 +34,17 @@
     {
         "image": "/img/exodia.jpg",
         "name": "엑조디아"
+    },
+    {
+        "image": "/img/reborn.jpg",
+        "name": "죽은자의 소생"
+    },
+    {
+        "image": "/img/chaos.jpg",
+        "name": "카오스 솔저"
+    },
+    {
+        "image": "/img/ultimate.jpg",
+        "name": "궁푸백"
     }
 ]
