@@ -6,7 +6,7 @@ const HomeBtn = () => {
     };
     return (
         <>
-            <button onClick={goHome}>홈으로</button>
+            <button className='home-btn' onClick={goHome}>홈으로</button>
         </>
     );
 };
