@@ -21,6 +21,9 @@ const MatchCardGame = () => {
         setFirstCard(null);
         setSecondCard(null);
         setLockBoard(false);
+        setIsCleared(false);
+        setIsOver(false);
+        setIsModalOpen(false);
 
         try {
             const res = await fetch('/data/cards.json');
@@ -73,17 +76,30 @@ const MatchCardGame = () => {
     };
 
     // 게임 클리어 및 오버 체크
+    
     useEffect(() => {
-        if (cards.length > 0 && cards.every((card) => card.isMatched)) {
-            setTimeout(() => {
+        const allMatched = cards.length > 0 && cards.every((card) => card.isMatched);
+        const gameIsOver = score >= 20;
+
+        // Cleanup function for the timeout
+        let timeoutId;
+
+        if (allMatched) {
+            timeoutId = setTimeout(() => {
                 setIsCleared(true);
                 setIsModalOpen(true);
             }, 1000);
-        } else if (score >= 20) {
-            // 예: 20번의 시도 후 게임 오버
+        } else if (gameIsOver) {
             setIsOver(true);
             setIsModalOpen(true);
         }
+
+        // Cleanup function to clear the timeout
+        return () => {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+        };
     }, [cards, score]);
 
     // 두 카드가 선택된 후 매치 확인
@@ -99,7 +115,7 @@ const MatchCardGame = () => {
                 setTimeout(() => {
                     resetCards();
                     setScore((prevScore) => prevScore + 1);
-                }, 1000);
+                }, 500);
             }
         }
     }, [firstCard, secondCard, score]);
@@ -125,8 +141,9 @@ const MatchCardGame = () => {
         setLockBoard(false);
     };
     const nextLevel = () => {
-        setIsHard(true);
         setIsModalOpen(false);
+        setIsCleared(false);
+        setIsHard(true);
     };
     // 더블 클릭 방지
     const handleDoubleClick = (e) => {
