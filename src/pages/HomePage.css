@@ -14,8 +14,9 @@
 #HomePage .swiper-slide {
   background-position: center;
   background-size: cover;
-  width: 300px;
-  height: 300px;
+  width: 700px;
+  height: auto;
+  border-radius: 10px;
 }
 
 #HomePage .swiper-slide img {
