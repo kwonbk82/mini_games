@@ -1,3 +1,4 @@
 import HomeBtn from "./HomeBtn";
-import Gameover from "./Gameover";
-export {HomeBtn,Gameover};
+import GameModal from "./GameModal";
+import RestartBtn from "./RestartBtn";
+export {HomeBtn,GameModal,RestartBtn};

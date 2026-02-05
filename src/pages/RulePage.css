@@ -1,3 +1,80 @@
-#RulePage{
-    color: aliceblue;
+body {
+    /* 전체 배경을 밝은 청록색으로 설정하고, flexbox를 이용해 내용을 중앙에 배치합니다. */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 20px;
+}
+#RulePage {
+    /* RulePage 컨테이너에 배경색, 그림자, 둥근 모서리를 적용합니다. */
+    background-color: #f7f7f7; /* 흰색에 가까운 배경색 */
+    width: 90%;
+    max-width: 1000px;
+    height: 700px; /* 높이를 이미지와 비슷하게 조정 */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+#RulePage h1 {
+    /* 제목 스타일을 설정합니다. */
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+    margin: 0;
+}
+
+.rule-img {
+    /* 이미지 컨테이너를 설정합니다. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.rule-img img {
+    /* 이미지를 컨테이너에 맞게 조절하고 둥근 모서리를 적용합니다. */
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* 이미지의 최대 높이 설정 */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#RulePage span {
+    /* 룰 설명 텍스트 스타일을 설정합니다. */
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#RulePage p a {
+    /* PLAY 링크 버튼 스타일을 설정합니다. */
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #f25a5a; /* 빨간색 계열의 배경색 */
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#RulePage p a:hover {
+    /* 호버 시 버튼 효과를 추가합니다. */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }

@@ -1,15 +1,17 @@
 #MatchCardGame body {
-  min-height: 100vh;
-  min-width: 100vh;
-  background-color: #12181f;
-  color: white;
+    min-height: 100vh;
+    min-width: 100vh;
+    background-color: #12181f;
+    color: white;
+    position: relative;
+
 }
 
-#MatchCardGame h1 {
+/* #MatchCardGame h1 {
     text-align: center;
     font-weight: 700;
     font-size: 50px;
-}
+} */
 
 #MatchCardGame p {
     text-align: center;
@@ -31,37 +33,84 @@
 }
 
 #MatchCardGame .grid-container {
-  display: grid;
-  justify-content: center;
-  grid-gap: 16px;
-  grid-template-columns: repeat(6, 140px);
-  grid-template-rows: repeat(2, calc(140px / 2 * 3));
+        display: grid; 
+    grid-template-columns: repeat(6, 140px);
+    grid-template-rows: repeat(2, calc(140px / 2 * 3));
+    grid-gap: 16px; 
+    /* grid 컨테이너 내부의 아이템들을 가운데로 정렬합니다. 
+       이렇게 하면 각 카드가 컨테이너 내에서 중앙에 위치합니다.
+    */
+    justify-items: center;
 
+    /* position 속성을 absolute로 설정하여 body의 흐름에서 벗어나게 합니다. */
+    position: absolute;
+    /* top, left, transform 속성을 사용해 가로 및 세로 방향으로 완벽하게 중앙 정렬합니다. */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#MatchCardGame .score {
+    display: flex; /* 내부 요소를 수직으로 정렬하기 위해 flexbox 사용 */
+    flex-direction: column; /* 'LP'와 숫자를 세로로 쌓음 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    align-items: center; /* 가로 중앙 정렬 */
+    width: 100px; /* 박스 너비 */
+    height: 65px; /* 박스 높이 */
+    padding: 5px; /* 내부 여백 */
+    /* 배경 그라데이션 및 테두리 */
+    background: linear-gradient(
+        to bottom,
+        #96c8e6,
+        #64a0c8
+    ); /* 연한 파란색 그라데이션 */
+    border: 2px solid #3278a9; /* 어두운 파란색 테두리 */
+    border-radius: 8px; /* 모서리를 둥글게 처리 */
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4),
+        /* 내부 빛 효과 */ 0 4px 6px rgba(0, 0, 0, 0.3); /* 아래쪽 그림자 효과 */
+    font-size: 30px; 
+    font-weight: bold; /* 폰트 굵기 */
+    color: #ffde64; /* 금색 폰트 색상 */
+    text-shadow: 1px 1px 2px rgba(200, 150, 50, 0.8),
+        /* 3D 효과를 위한 그림자 */ -1px -1px 2px rgba(255, 255, 255, 0.4); 
+    position: absolute; /* .MatchCardGame 기준으로 절대 위치 지정 */
+    left: 200px; /* 왼쪽에서 20px 떨어지게 배치 */
+    top: 400px; /* 상단에서 20px 떨어지게 배치 */
+    margin: 0; /* 기존 margin 속성 제거 */
+}
+
+#MatchCardGame .score span {
+    font-size: 30px; /* 숫자 폰트 크기 (요청하신 크기) */
+    font-weight: bold; /* 폰트 굵기 */
+    color: #ffde64; /* 금색 폰트 색상 */
+    text-shadow: 1px 1px 2px rgba(200, 150, 50, 0.8),
+        /* 3D 효과를 위한 그림자 */ -1px -1px 2px rgba(255, 255, 255, 0.4); /* 하이라이트 효과 */
 }
 
 #MatchCardGame .card {
-  height: calc(140px / 2 * 3);
-  width: 140px;
-  border-radius: 10px;
-  background-color: transparent;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: all 0.5s ease-in-out;
+    height: calc(140px / 2 * 3);
+    width: 140px;
+    border-radius: 10px;
+    background-color: transparent;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    cursor: pointer;
 }
 
 #MatchCardGame .front-image {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
 
 #MatchCardGame .card.flipped {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
-#MatchCardGame .front, #MatchCardGame .back {
+#MatchCardGame .front,
+#MatchCardGame .back {
     backface-visibility: hidden;
     position: absolute;
-    border-radius: 10px;
+    border-radius: 5px;
     top: 0;
     left: 0;
     height: 100%;
@@ -69,19 +118,61 @@
 }
 
 #MatchCardGame .card .front {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #MatchCardGame .card .back {
-  /* background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='25' height='25' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(0,0%,100%,1)'/><path d='M25 30a5 5 0 110-10 5 5 0 010 10zm0-25a5 5 0 110-10 5 5 0 010 10zM0 30a5 5 0 110-10 5 5 0 010 10zM0 5A5 5 0 110-5 5 5 0 010 5zm12.5 12.5a5 5 0 110-10 5 5 0 010 10z'  stroke-width='1' stroke='none' fill='hsla(174, 100%, 29%, 1)'/><path d='M0 15a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm25 0a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM12.5 2.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm0 25a2.5 2.5 0 110-5 2.5 2.5 0 010 5z'  stroke-width='1' stroke='none' fill='hsla(187, 100%, 42%, 1)'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>"); */
-  background-position: center center;
-  background-size: cover;
-  backface-visibility: hidden;
-  background-image: url(/img/card_back.png);
+    /* background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='25' height='25' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(0,0%,100%,1)'/><path d='M25 30a5 5 0 110-10 5 5 0 010 10zm0-25a5 5 0 110-10 5 5 0 010 10zM0 30a5 5 0 110-10 5 5 0 010 10zM0 5A5 5 0 110-5 5 5 0 010 5zm12.5 12.5a5 5 0 110-10 5 5 0 010 10z'  stroke-width='1' stroke='none' fill='hsla(174, 100%, 29%, 1)'/><path d='M0 15a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm25 0a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM12.5 2.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm0 25a2.5 2.5 0 110-5 2.5 2.5 0 010 5z'  stroke-width='1' stroke='none' fill='hsla(187, 100%, 42%, 1)'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>"); */
+    background-position: center center;
+    background-size: cover;
+    backface-visibility: hidden;
+    background-image: url(/img/card_back.png);
 }
 
 #MatchCardGame .card .front {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+#MatchCardGame .common-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    position: absolute; /* .MatchCardGame 기준으로 절대 위치 지정 */
+    right: 200px; /* 오른쪽에서 20px 떨어지게 배치 */
+    top: 400px; /* 상단에서 20px 떨어지게 배치 */
+    margin: 0; /* 기존 margin 속성 제거 */
+    
+}
+#MatchCardGame .common-btn button {
+    /* 기본 버튼 디자인 */
+    cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
+    width: 83px;
+    height: 121px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    color: white;
+    /* 그림자를 이용한 3D 입체감 */
+    box-shadow: 
+        0 4px 6px rgba(0, 0, 0, 0.3), /* 아래쪽 그림자 */
+        inset 0 1px 0 rgba(255, 255, 255, 0.3); /* 상단 하이라이트 */
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* 부드러운 전환 효과 */
+    transition: all 0.2s ease-in-out;
+}
+#MatchCardGame .common-btn .restart-btn{
+    display: block;
+    background-image: url(/img/magic_card.jpeg);
+}
+#MatchCardGame .common-btn .home-btn{
+    display: block;
+    background-image: url(/img/trap_card.jpeg);
+}
+#MatchCardGame .common-btn button:hover {
+    /* 마우스 올렸을 때 효과 */
+    color: black;
+    transform: scale(1.05); 
 }
